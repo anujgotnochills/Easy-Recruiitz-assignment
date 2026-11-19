@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <main id="main-content" tabIndex={-1}>
+  return <main id="main-content" tabIndex={-1} className="outline-none focus:outline-none">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeSchema(homeSchema) }} />
     <Container className="home-sections">
       <AudienceSections sections={{

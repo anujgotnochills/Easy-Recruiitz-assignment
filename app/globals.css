@@ -33,6 +33,13 @@ a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; }
 button:disabled { cursor: default; }
 :focus-visible { outline: 3px solid #02bdc8; outline-offset: 4px; }
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible,
+#main-content:focus,
+#main-content:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
 .dark-panel :focus-visible, .audience-candidate :focus-visible { outline-color: #7de8ed; }
 .dark-panel .contact-form :focus-visible { outline-color: #02bdc8; }
 ::selection { color: #fff; background: var(--brand); }
