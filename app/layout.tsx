@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: { default: site.title, template: '%s | ' + BRAND },
   description: site.description,
   openGraph: { type: 'website', siteName: BRAND, locale: 'en_IN', title: site.title, description: site.description },
-  twitter: { card: 'summary_large_image', title: site.title, description: site.description, images: ['/opengraph-image'] },
+  twitter: { card: 'summary_large_image', site: '@EasyRecruitz', title: site.title, description: site.description, images: ['/opengraph-image'] },
   appleWebApp: { title: BRAND, capable: true },
   icons: {
     icon: [

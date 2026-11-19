@@ -1,4 +1,7 @@
 import { ArrowUpRight, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import hiringPortrait from '@/assets/entry-gate/hiring-white-shirt.png';
+import jobPortrait from '@/assets/entry-gate/job-seeker.png';
 import { audienceCopy, audienceModes } from '@/data/audience';
 import { site } from '@/data/site';
 import { Button } from './ui/Button';
@@ -25,15 +28,25 @@ export function Hero() {
         })}
       </div>
     </div>
-    <div className="hero-directory" data-hero-reveal="directory">
-      <p className="hero-office"><MapPin size={17} aria-hidden="true" />{site.neighbourhood}, {site.office.addressLocality}</p>
-      {audienceModes.map(mode => <nav key={mode} data-audience-copy={mode} aria-label={audienceCopy[mode].hero.directoryLabel}>
-        <ul>
-          {audienceCopy[mode].hero.links.map(service => <li key={service.href}>
-            <a href={service.href}>{service.text}<ArrowUpRight size={19} aria-hidden="true" /></a>
-          </li>)}
-        </ul>
-      </nav>)}
+    <div className="hero-side" data-hero-reveal="directory">
+      <div className="hero-portraits" aria-hidden="true">
+        <div className="hero-portrait hero-portrait--employer" data-audience-copy="employer">
+          <Image src={hiringPortrait} alt="" priority sizes="(max-width: 700px) 300px, 440px" />
+        </div>
+        <div className="hero-portrait hero-portrait--candidate" data-audience-copy="candidate">
+          <Image src={jobPortrait} alt="" priority sizes="(max-width: 700px) 300px, 440px" />
+        </div>
+      </div>
+      <div className="hero-directory">
+        <p className="hero-office"><MapPin size={17} aria-hidden="true" />{site.neighbourhood}, {site.office.addressLocality}</p>
+        {audienceModes.map(mode => <nav key={mode} data-audience-copy={mode} aria-label={audienceCopy[mode].hero.directoryLabel}>
+          <ul>
+            {audienceCopy[mode].hero.links.map(service => <li key={service.href}>
+              <a href={service.href}>{service.text}<ArrowUpRight size={19} aria-hidden="true" /></a>
+            </li>)}
+          </ul>
+        </nav>)}
+      </div>
     </div>
   </section>;
 }

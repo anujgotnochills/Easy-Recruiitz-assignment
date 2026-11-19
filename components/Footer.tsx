@@ -1,4 +1,4 @@
-import { MapPin } from 'lucide-react';
+import { Instagram, Linkedin, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { content } from '@/data/content';
 import { BRAND, common, site } from '@/data/site';
@@ -19,7 +19,14 @@ export function Footer() {
       <div className="footer-contact"><h2>{footer.contact}</h2><address>
         <a href={site.phoneHref}>{site.phone}</a><a href={'mailto:' + site.email}>{site.email}</a>
         <p><MapPin size={15} aria-hidden="true" />{site.address}</p>
-      </address></div>
+      </address>
+        <nav className="footer-social" aria-label="Social media">
+          {site.social.map(profile => <a key={profile.name} href={profile.href} target="_blank" rel="noopener noreferrer" aria-label={'Easy Recruitz on ' + profile.name}>
+            {profile.name === 'Instagram' ? <Instagram size={18} aria-hidden="true" /> : profile.name === 'LinkedIn' ? <Linkedin size={18} aria-hidden="true" /> : <span className="footer-social-x" aria-hidden="true">𝕏</span>}
+            {profile.name !== 'X' && <span>{profile.name}</span>}
+          </a>)}
+        </nav>
+      </div>
     </div>
     <div className="footer-bottom"><small>© {year} {BRAND}. {footer.legal}</small>
       <div><Link href="/privacy">{common.privacy}</Link><Link href="/terms">{common.terms}</Link></div>

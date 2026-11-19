@@ -9,6 +9,7 @@ export const homeSchema = {
     {
       '@type': 'Organization', '@id': organizationId,
       name: BRAND, url: site.url, telephone: site.phone, email: site.email,
+      sameAs: site.social.map(profile => profile.href),
       logo: site.url + '/icon.svg',
     },
     {

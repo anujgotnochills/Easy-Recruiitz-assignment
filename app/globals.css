@@ -332,6 +332,11 @@ button:disabled { cursor: default; }
 .hero-button-slot { min-height: 54px; margin-top: 19px; }
 .hero-buttons { display: flex; gap: 9px; flex-wrap: wrap; }
 .hero-buttons .button { min-height: 50px; padding-inline: 19px; }
+.hero-side { display: grid; gap: 18px; width: 100%; max-width: 520px; justify-self: end; }
+.hero-portraits { height: clamp(180px, 18vw, 245px); }
+.hero-portrait { display: grid; place-items: center; height: 100%; overflow: hidden; border-radius: 26px; background: #e8eef9; }
+.hero-portrait--candidate { background: #dff4f5; }
+.hero-portrait img { display: block; width: 90%; height: 90%; object-fit: contain; }
 .hero-directory { width: 100%; max-width: 520px; justify-self: end; }
 .hero-office { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; color: #a8c4e0; font-size: .9rem; font-weight: 650; }
 .hero-office svg { flex: none; color: var(--accent); }
@@ -410,6 +415,10 @@ html[data-audience="candidate"] .pill {
 .about-panel { background: #f7fafc; }
 .about-grid { display: grid; grid-template-columns: 1.1fr .86fr; gap: clamp(23px, 6.4vw, 103px); align-items: center; }
 .about-grid .section-heading h2 { max-width: 18ch; font-size: clamp(2rem, 3.5vw, 3.4rem); }
+.about-people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 510px; margin-top: 28px; }
+.about-people span { display: grid; place-items: center; height: 160px; overflow: hidden; border-radius: 22px; background: #e8eef9; }
+.about-people span + span { background: #dff4f5; }
+.about-people img { width: 92%; height: 92%; object-fit: contain; }
 .about-copy p { margin: 0 0 12px; color: #44495e; }
 .about-copy .button { margin-top: 7px; }
 .services-panel { background: var(--soft); }
@@ -426,11 +435,19 @@ html[data-audience="candidate"] .pill {
 .service-feature { background: var(--accent); border-color: var(--accent-hover); }
 .service-feature .icon-box { background: #d6f5f7; color: var(--brand); }
 .service-feature .service-copy p { color: #fff; }
+.service-feature .service-copy { max-width: 63%; }
+.service-portrait { position: absolute; top: 11px; right: 36px; display: grid; place-items: center; width: min(39%, 210px); height: 170px; pointer-events: none; }
+.service-portrait img { width: 100%; height: 100%; object-fit: contain; }
 .service-feature .service-arrow { background: #d6f5f7; border-color: var(--accent-hover); color: var(--brand); }
 
 .audience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .audience-benefit > div { height: 100%; }
 .audience-panel { height: 100%; display: flex; flex-direction: column; padding: clamp(24px, 4vw, 63px); }
+.audience-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.audience-panel-head .section-heading { min-width: 0; }
+.audience-panel-art { display: grid; place-items: center; flex: none; width: clamp(110px, 13vw, 180px); height: 150px; overflow: hidden; border-radius: 22px; background: #e8eef9; }
+.audience-candidate .audience-panel-art { background: #dff4f5; }
+.audience-panel-art img { width: 94%; height: 94%; object-fit: contain; }
 .audience-employer { background: var(--ink); color: #fff; border-color: #0d2550; }
 .audience-candidate { background: var(--brand); color: #fff; border-color: var(--brand); }
 .audience-panel .section-heading h2 { max-width: 12ch; font-size: clamp(2rem, 3.7vw, 3.4rem); }
@@ -503,6 +520,9 @@ html[data-audience="candidate"] .pill {
 .estimator-result small { margin-top: 8px; color: #4b543d; font-size: .78rem; line-height: 1.45; }
 
 .jobs-panel { background: var(--soft); }
+.jobs-heading-side { display: flex; align-items: center; gap: 24px; }
+.jobs-heading-art { display: grid; place-items: center; width: 168px; height: 150px; overflow: hidden; border-radius: 22px; background: #fff; }
+.jobs-heading-art img { width: 100%; height: 100%; object-fit: contain; }
 .jobs-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 17px; }
 .job-filters { display: flex; flex-wrap: wrap; gap: 6px; }
 .job-filters button { min-height: 44px; padding: 7px 12px; color: #473767; background: #fff; border: 1px solid #d9d1e9; border-radius: 999px; font-size: .85rem; font-weight: 670; }
@@ -584,6 +604,10 @@ html[data-audience="candidate"] .pill {
 .footer-contact address { display: grid; gap: 1px; font-style: normal; }
 .footer-contact address p { display: flex; align-items: start; gap: 5px; margin: 8px 0 0; color: #dedbe8; font-size: .8rem; line-height: 1.45; }
 .footer-contact address p svg { flex: none; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.footer-social a { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 8px 12px; border: 1px solid #ffffff36; border-radius: 999px; color: #f4f7ff; font-size: .8rem; font-weight: 650; text-decoration: none; transition: background-color 180ms ease, border-color 180ms ease; }
+.footer-social a:hover { border-color: #ffffff91; background: #ffffff18; }
+.footer-social-x { display: inline-grid; place-items: center; width: 18px; height: 18px; font-size: 1.05rem; line-height: 1; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 9px; margin-top: 22px; border-top: 1px solid #ffffff29; color: #ccc9dd; }
 .footer-bottom small { font-size: .75rem; }
 .footer-bottom > div { display: flex; column-gap: 13px; flex-wrap: wrap; }
@@ -639,6 +663,9 @@ html[data-audience="candidate"] .pill {
   :root { --panel-radius: 32px; --panel-pad: clamp(19px, 5.5vw, 34px); }
   .home-sections, .audience-grid { gap: 13px; }
   .hero { grid-template-columns: minmax(0, 1fr); padding: 28px var(--panel-pad); min-height: 0; gap: 26px; }
+  .hero-side { max-width: none; gap: 16px; }
+  .hero-portraits { height: clamp(220px, 68vw, 285px); }
+  .hero-portrait { border-radius: 22px; }
   .hero-directory { max-width: none; justify-self: start; }
   .hero-directory a { min-height: 46px; }
   .hero h1 { font-size: clamp(2.05rem, 8.65vw, 3.8rem); margin-bottom: 12px; letter-spacing: -.075em; }
@@ -650,9 +677,17 @@ html[data-audience="candidate"] .pill {
   .section-detail { margin-top: 10px; }
   .about-grid, .audience-grid, .industry-layout, .estimator-layout, .faq-layout, .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 18px; }
   .audience-grid { gap: 13px; }
+  .audience-panel-art { width: 112px; height: 108px; border-radius: 16px; }
   .about-grid .section-heading h2, .industry-layout .section-heading h2, .faq-layout .section-heading h2 { max-width: 19ch; text-wrap: balance; }
   .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .service-wrap-0 { grid-column: 1 / -1; }
   .service-card { padding: 14px; min-height: 152px; border-radius: 19px; }
+  .service-feature { min-height: 230px; }
+  .service-feature .service-copy { max-width: 60%; }
+  .service-portrait { top: 14px; right: 12px; width: 42%; height: 145px; }
+  .jobs-heading-side { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 10px; width: 100%; }
+  .jobs-heading-art { width: 100px; height: 100px; }
+  .jobs-heading-side .button { width: 100%; min-width: 0; white-space: normal; }
   .service-card .icon-box { width: 39px; height: 39px; border-radius: 12px; }
   .service-card .icon-box svg { width: 19px; height: 19px; }
   .service-copy { margin-top: 12px; }

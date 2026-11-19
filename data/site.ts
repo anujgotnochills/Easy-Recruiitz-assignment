@@ -24,6 +24,11 @@ export const site = {
   office,
   neighbourhood,
   whatsapp: 'https://wa.me/' + phoneDigits,
+  social: [
+    { name: 'Instagram', href: 'https://www.instagram.com/easyrecruiitz365/' },
+    { name: 'X', href: 'https://x.com/EasyRecruitz' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/easy-recruitz' },
+  ],
   // TODO(client): Replace approximate Jasola coordinates with the verified office pin.
   geo: { latitude: 28.543, longitude: 77.289 },
 } as const;
