@@ -30,6 +30,7 @@ export function AudienceSwitcher() {
             role="radio"
             data-mode={option}
             aria-checked={active}
+            aria-label={audienceCopy[option].switchLabel}
             className={`audience-switcher-btn ${active ? 'is-active' : ''}`}
             onClick={() => setMode(option)}
           >
