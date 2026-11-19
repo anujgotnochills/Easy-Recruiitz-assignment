@@ -19,7 +19,7 @@ const audienceBootstrap = '(()=>{const root=document.documentElement;let mode;tr
   '.includes(mode)){root.dataset.audience=mode}if(' + SHOW_ENTRY_GATE +
   '&&location.pathname==="/"){root.dataset.entryGate="open"}})()';
 
-export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#F6F5F1' };
+export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#022f71' };
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -28,6 +28,16 @@ export const metadata: Metadata = {
   openGraph: { type: 'website', siteName: BRAND, locale: 'en_IN', title: site.title, description: site.description },
   twitter: { card: 'summary_large_image', title: site.title, description: site.description, images: ['/opengraph-image'] },
   appleWebApp: { title: BRAND, capable: true },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   manifest: '/manifest.webmanifest',
 };
 

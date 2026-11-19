@@ -63,7 +63,7 @@ export function EntryGate({ active, rising, onChoose }:
             animate={reduced ? { opacity: 1 } : { x: 0, opacity: 1 }}
             exit={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0 }}
             transition={{ duration: reduced ? 0.2 : 0.55, ease: slideEase }}>
-            <Image src={illustrations[mode]} alt="" priority
+            <Image src={illustrations[mode]} alt="" priority loading="eager"
               sizes="(min-width: 1440px) 720px, (min-width: 768px) 45vw, 300px" />
           </m.div>
         )}
