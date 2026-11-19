@@ -79,7 +79,7 @@ export function EntryGate({ active, rising, onChoose }:
       </AnimatePresence>
     </div>
     <div className="entry-gate-content">
-      <span className="logo entry-logo"><LogoWordmark /></span>
+      <span className="logo entry-logo"><LogoWordmark sizes="(max-width: 767px) 64px, 110px" priority /></span>
       <h2 id={title}>
         <span className="entry-greeting">{entryCopy.title[0]}</span>
         <span className="entry-question">{entryCopy.title[1]}</span>
