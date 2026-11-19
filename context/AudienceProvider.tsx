@@ -105,8 +105,12 @@ export function AudienceProvider({ children }: { children: ReactNode }) {
   }, [phase]);
 
   return <AudienceContext.Provider value={{ mode, setMode }}>
+    {/* Entrance and switch are separate flags: folding them into one attribute made the
+        navbar and hero entrance rules unmatch on the first switch, which restarted their
+        animations and flashed the whole navbar away. */}
     <div className="site-content" inert={locked} data-entry-rising={rising || undefined}
-      data-audience-animation={switched ? 'switch' : phase === 'entered' ? 'entrance' : undefined}
+      data-audience-animation={phase === 'entered' ? 'entrance' : undefined}
+      data-audience-switch={switched ? 'on' : undefined}
       onAnimationEnd={onSiteAnimationEnd}>
       {children}
     </div>

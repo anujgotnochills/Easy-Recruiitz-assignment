@@ -2,10 +2,10 @@
 
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, BriefcaseBusiness, UserRoundSearch } from 'lucide-react';
 import Image from 'next/image';
-import hiringImage from '@/assets/entry-gate/hiring.jpg';
-import jobSeekerImage from '@/assets/entry-gate/job-seeker.jpg';
+import hiringImage from '@/assets/entry-gate/hiring-white-shirt.png';
+import jobSeekerImage from '@/assets/entry-gate/job-seeker.png';
 import { audienceCopy, audienceModes, DEFAULT_AUDIENCE, entryCopy } from '@/data/audience';
 import type { Audience } from '@/data/site';
 import { useHoverCapable } from '@/hooks/useHoverCapable';
@@ -27,7 +27,7 @@ export function EntryGate({ active, rising, onChoose }:
   const [input, setInput] = useState<'pointer' | 'keyboard'>('keyboard');
 
   useEffect(() => {
-    if (active) dialog.current?.querySelector('button')?.focus({ preventScroll: true });
+    if (active) dialog.current?.focus({ preventScroll: true });
   }, [active]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -38,7 +38,7 @@ export function EntryGate({ active, rising, onChoose }:
     }
     if (event.key !== 'Tab') return;
     setInput('keyboard');
-    const controls = dialog.current?.querySelectorAll<HTMLElement>('button, a[href]');
+    const controls = Array.from(dialog.current?.querySelectorAll<HTMLElement>('button, a[href]') ?? []).filter(control => control.getClientRects().length);
     if (!controls?.length) return;
     const first = controls[0];
     const last = controls[controls.length - 1];
@@ -53,16 +53,25 @@ export function EntryGate({ active, rising, onChoose }:
 
   const mode = canHover ? (input === 'pointer' ? hovered : focused) : null;
 
-  return <div ref={dialog} className="entry-gate" role="dialog" aria-modal="true" aria-labelledby={title}
+  return <div ref={dialog} className="entry-gate" role="dialog" aria-modal="true" aria-label="Choose your path" tabIndex={-1}
     data-rising={rising || undefined} data-lenis-prevent onKeyDown={onKeyDown}>
     <div className="entry-illustrations" aria-hidden="true">
       <AnimatePresence>
         {mode && (
+          <m.div key={'aura-' + mode} className={'entry-aura entry-aura--' + mode}
+            initial={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0, scale: 0.8 }}
+            animate={reduced ? { opacity: 1 } : { x: 0, opacity: 1, scale: 1 }}
+            exit={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0, scale: 0.85 }}
+            transition={{ duration: reduced ? 0.15 : 0.7, ease: slideEase }} />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {mode && (
           <m.div key={mode} className={'entry-illustration entry-illustration--' + mode}
-            initial={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0.6 }}
-            animate={reduced ? { opacity: 1 } : { x: 0, opacity: 1 }}
-            exit={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0 }}
-            transition={{ duration: reduced ? 0.2 : 0.55, ease: slideEase }}>
+            initial={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0, scale: 0.94 }}
+            animate={reduced ? { opacity: 1 } : { x: 0, opacity: 1, scale: 1 }}
+            exit={reduced ? { opacity: 0 } : { x: directions[mode], opacity: 0, scale: 0.94 }}
+            transition={{ duration: reduced ? 0.15 : 0.62, ease: slideEase }}>
             <Image src={illustrations[mode]} alt="" priority loading="eager"
               sizes="(min-width: 1440px) 720px, (min-width: 768px) 45vw, 300px" />
           </m.div>
@@ -97,8 +106,16 @@ export function EntryGate({ active, rising, onChoose }:
           </button>
         )}
       </div>
+        <section className="entry-mobile-flow" aria-label="Choose your path">
+          {audienceModes.map(choice => <button key={choice} type="button" className={'entry-mobile-card entry-mobile-card--' + choice} onClick={() => onChoose(choice)}>
+            <span className="entry-mobile-card-icon" aria-hidden="true">{choice === 'employer' ? <BriefcaseBusiness size={22} /> : <UserRoundSearch size={22} />}</span>
+            <span className="entry-mobile-card-art" aria-hidden="true"><Image src={illustrations[choice]} alt="" sizes="(max-width: 400px) 300px, 380px" /></span>
+            <span className="entry-mobile-card-bottom"><span><strong>{choice === 'employer' ? 'I’m hiring' : 'I’m looking for a job'}</strong><small>{choice === 'employer' ? 'Find vetted talent, faster' : 'Discover roles that fit you'}</small></span><span className="entry-mobile-card-arrow" aria-hidden="true"><ArrowUpRight size={21} /></span></span>
+          </button>)}
+        </section>
       <a href="#main-content" className="entry-skip" onClick={event => { event.preventDefault(); onChoose(DEFAULT_AUDIENCE); }}>
-        {entryCopy.skip}
+          <span className="entry-skip-desktop">{entryCopy.skip}</span>
+          <span className="entry-skip-mobile">Skip</span>
       </a>
     </div>
   </div>;

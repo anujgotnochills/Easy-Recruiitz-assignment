@@ -209,7 +209,7 @@ button:disabled { cursor: default; }
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 180ms ease;
+  transition: color 0ms;
   user-select: none;
 }
 .audience-switcher-btn:hover {
@@ -217,6 +217,9 @@ button:disabled { cursor: default; }
 }
 .audience-switcher-btn.is-active {
   color: #fff;
+  /* The pill slides in over ~170ms: keep the label dark until it is nearly under the
+     pill, then flip it to white so it never sits white on the light track. */
+  transition: color 60ms ease 120ms;
 }
 .audience-switcher-indicator {
   position: absolute;
@@ -439,6 +442,9 @@ html[data-audience="candidate"] .pill {
 .audience-employer :focus-visible { outline-color: var(--accent); }
 
 .process-panel { background: #f7fafc; }
+/* The stats panel is shown as soon as it is on screen: it never fades or slides in on scroll. */
+.recruitment-stats,
+.audience-section:has(.recruitment-stats) [data-reveal] { opacity: 1 !important; transform: none !important; animation: none !important; }
 .recruitment-stats dl, .candidate-testimonials ul { display: grid; gap: 12px; margin: 22px 0 0; padding: 0; }
 .recruitment-stats dl { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .recruitment-stats dl div, .candidate-testimonials li { padding: clamp(14px, 2vw, 25px); border: 1px solid #c0d5e8; border-radius: var(--card-radius); background: #f7fafc; }
