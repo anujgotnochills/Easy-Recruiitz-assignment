@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { useAudience } from '@/context/AudienceProvider';
 import { content } from '@/data/content';
 import { common, contactHref, nav } from '@/data/site';
 import { AudienceSwitcher } from './AudienceSwitcher';
@@ -10,6 +11,7 @@ import { Container } from './ui/Container';
 import { Logo } from './ui/Logo';
 
 export function Header() {
+  const { mode } = useAudience();
   const [compact, setCompact] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menu = useRef<HTMLDialogElement>(null);
@@ -38,8 +40,17 @@ export function Header() {
           <div className="nav-end">
             <AudienceSwitcher />
             <div className="nav-actions">
-              <Button href="/#jobs" variant="outline" arrow={false}>{common.find}</Button>
-              <Button href={contactHref()}>{common.hire}</Button>
+              {mode === 'candidate' ? (
+                <>
+                  <Button href={contactHref()} variant="outline" arrow={false}>{common.hire}</Button>
+                  <Button href="/#jobs">{common.find}</Button>
+                </>
+              ) : (
+                <>
+                  <Button href="/#jobs" variant="outline" arrow={false}>{common.find}</Button>
+                  <Button href={contactHref()}>{common.hire}</Button>
+                </>
+              )}
             </div>
             <button type="button" className="icon-button menu-trigger" aria-expanded={menuOpen} aria-controls="mobile-menu"
               aria-label={content.header.open} onClick={() => { menu.current?.showModal(); setMenuOpen(true); }}>
@@ -55,8 +66,17 @@ export function Header() {
             {nav.map(item => <a key={item.href} href={item.href} onClick={close}>{item.text}<ArrowUpRight size={22} aria-hidden="true" /></a>)}
           </nav>
           <div className="menu-actions" onClick={close}>
-            <Button href={contactHref()}>{common.hire}</Button>
-            <Button href="/#jobs" variant="outline">{common.find}</Button>
+            {mode === 'candidate' ? (
+              <>
+                <Button href="/#jobs">{common.find}</Button>
+                <Button href={contactHref()} variant="outline">{common.hire}</Button>
+              </>
+            ) : (
+              <>
+                <Button href={contactHref()}>{common.hire}</Button>
+                <Button href="/#jobs" variant="outline">{common.find}</Button>
+              </>
+            )}
           </div>
         </div>
       </dialog>

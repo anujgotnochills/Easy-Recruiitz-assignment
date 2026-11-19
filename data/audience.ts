@@ -9,8 +9,8 @@ export function isAudience(value: unknown): value is Audience {
 }
 
 export const entryCopy = {
-  title: ['Welcome.', 'What brings you here today?'],
-  skip: 'Skip and explore',
+  title: ['Welcome.', 'Are you looking to hire talent or find your next job?'],
+  skip: 'Skip to explore recruitment services',
   modeControl: 'Choose your audience',
 } as const;
 
@@ -22,7 +22,7 @@ type CandidateTestimonial = {
 
 export const audienceCopy = {
   employer: {
-    choice: 'I’m Hiring',
+    choice: 'I’m Hiring Talent',
     switchLabel: 'Hiring',
     announcement: 'Employer view selected.',
     hero: {

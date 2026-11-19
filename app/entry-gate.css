@@ -26,7 +26,7 @@ html[data-entry-gate] .entry-gate { display: flex; }
 .entry-gate-content {
   position: relative;
   z-index: 1;
-  width: min(calc(100% - 48px), 520px);
+  width: min(calc(100% - 48px), 560px);
   min-width: 0;
   margin: auto;
   padding-block: 35px;
@@ -52,19 +52,19 @@ html[data-entry-gate] .entry-gate { display: flex; }
 }
 .entry-gate h2 .entry-greeting {
   display: block;
-  font-size: clamp(2.5rem, 4.8vw, 4.25rem);
+  font-size: clamp(2.15rem, 4.2vw, 3.75rem);
   font-weight: 730;
-  line-height: 1.05;
-  letter-spacing: -.06em;
+  line-height: 1.06;
+  letter-spacing: -.055em;
   color: var(--brand);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .entry-gate h2 .entry-question {
   display: block;
-  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+  font-size: clamp(1.45rem, 2.6vw, 2.25rem);
   font-weight: 730;
-  line-height: 1.15;
-  letter-spacing: -.04em;
+  line-height: 1.2;
+  letter-spacing: -.035em;
   color: var(--ink);
 }
 .entry-choices {
@@ -72,7 +72,7 @@ html[data-entry-gate] .entry-gate { display: flex; }
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  max-width: 380px;
+  max-width: 390px;
   margin: 0 auto;
 }
 .entry-choice {
