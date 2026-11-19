@@ -293,6 +293,25 @@ button:disabled { cursor: default; }
 .menu-sheet[open] .menu-actions {
   animation: menu-item-slide 400ms cubic-bezier(0.16, 1, 0.3, 1) 290ms both;
 }
+@media (max-width: 959px) {
+  .menu-sheet { inset: 8px 8px auto; width: auto; max-width: 440px; max-height: calc(100dvh - 16px); margin-inline: auto; overflow-y: auto; border-radius: 26px; background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .menu-inner { grid-template-rows: auto auto auto; height: auto; gap: 14px; padding: max(18px, env(safe-area-inset-top)) 20px max(18px, env(safe-area-inset-bottom)); }
+  .menu-head { min-width: 0; gap: 8px; }
+  .menu-head .logo { height: 54px; min-height: 0; gap: 7px; min-width: 0; }
+  .menu-head .logo .logo-img { height: 54px; flex: none; }
+  .menu-head .logo-name { font-size: .9rem; letter-spacing: -.04em; }
+  .menu-head .icon-button { width: 44px; height: 44px; }
+  .menu-inner nav { display: block; overflow: visible; }
+  .menu-inner nav a { min-height: 50px; padding: 9px 2px; font-size: 1.05rem; }
+  .menu-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .menu-actions .button { width: 100%; min-height: 52px; padding: 9px; font-size: .82rem; }
+}
+@media (max-width: 345px) {
+  .menu-head .logo { height: 46px; gap: 4px; }
+  .menu-head .logo .logo-img { height: 46px; }
+  .menu-head .logo-name { font-size: .75rem; }
+  .menu-actions { grid-template-columns: 1fr; }
+}
 
 @keyframes menu-open {
   from {
