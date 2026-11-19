@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Instagram, Linkedin } from 'lucide-react';
 import { common, contactHref, site } from '@/data/site';
 import { Button } from './ui/Button';
 
@@ -41,6 +41,14 @@ export function GlobalExtras() {
   return <>
     <div className="floating-actions">
       {scrolled && <a className="icon-button to-top" href="#top" aria-label={common.top}><ArrowUp size={21} aria-hidden="true" /></a>}
+      {site.social.map(profile => <a key={profile.name} href={profile.href}
+        className={'icon-button floating-social floating-social--' + profile.name.toLowerCase()}
+        aria-label={'Easy Recruitz on ' + profile.name} title={profile.name}
+        target="_blank" rel="noopener noreferrer">
+        {profile.name === 'Instagram' ? <Instagram size={23} aria-hidden="true" />
+          : profile.name === 'LinkedIn' ? <Linkedin size={23} aria-hidden="true" />
+            : <span className="floating-social-x" aria-hidden="true">𝕏</span>}
+      </a>)}
       <a href={site.whatsapp} className="icon-button whatsapp" aria-label={common.whatsapp}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.8 11.8a8.7 8.7 0 0 1-8.8 8.7 9 9 0 0 1-3.9-.9L3 21l1.4-5a8.6 8.6 0 0 1-1.1-4.2 8.8 8.8 0 1 1 17.5 0Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" /><path d="M8.2 7.6c.2-.5.5-.5.9-.5.2 0 .4.1.5.4l.8 1.9c.1.2.1.4 0 .6l-.6.8c-.1.2-.1.3 0 .5.7 1.2 1.6 2.1 2.9 2.7.2.1.4.1.5-.1l.9-1.1c.2-.2.3-.2.6-.1l1.9.9c.3.1.4.2.4.4 0 1.2-1.2 2-2.3 2-2.8 0-6.9-3.5-6.9-6.2 0-.9.2-1.6.4-2.2Z" fill="currentColor" /></svg>
       </a>

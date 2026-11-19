@@ -595,6 +595,11 @@ html[data-audience="candidate"] .pill {
 .footer-bottom > div { display: flex; column-gap: 13px; flex-wrap: wrap; }
 
 .floating-actions { position: fixed; z-index: 15; right: max(14px, var(--edge)); bottom: 17px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.floating-actions .floating-social { width: 50px; height: 50px; color: #fff; border-color: #ffffffb8; box-shadow: 0 4px 18px #0d1e3d38; }
+.floating-social--instagram { background: linear-gradient(135deg, #7b2bbd, #d62976 52%, #f6a238); }
+.floating-social--x { background: #121b2c; }
+.floating-social--linkedin { background: #0a66c2; }
+.floating-social-x { font-size: 1.55rem; font-weight: 700; line-height: 1; }
 .floating-actions .whatsapp { background: #1c6844; border-color: #e8f8e7; color: white; width: 50px; height: 50px; box-shadow: 0 4px 18px #1d433442; }
 .to-top { box-shadow: var(--shadow); }
 .mobile-actions { display: none; }
@@ -643,6 +648,8 @@ html[data-audience="candidate"] .pill {
   .mobile-actions { position: fixed; inset: auto var(--edge) max(8px, env(safe-area-inset-bottom)); z-index: 16; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 6px; max-width: 520px; margin-inline: auto; padding: 6px; border: 1px solid #e1ddea; border-radius: 999px; background: #fffffff0; backdrop-filter: blur(12px); box-shadow: 0 5px 24px #20173f26; }
   .mobile-actions .button { width: 100%; min-height: 44px; }
   .floating-actions { bottom: calc(max(8px, env(safe-area-inset-bottom)) + 65px); }
+  .floating-actions .floating-social, .floating-actions .whatsapp { width: 44px; height: 44px; }
+  .floating-actions .floating-social svg, .floating-actions .whatsapp svg { width: 21px; height: 21px; }
 }
 @media (max-width: 700px) {
   .recruitment-stats dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
