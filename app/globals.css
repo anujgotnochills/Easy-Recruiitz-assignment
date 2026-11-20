@@ -176,7 +176,8 @@ button:disabled { cursor: default; }
 .nav-end { display: flex; align-items: center; justify-content: flex-end; gap: 7px; min-width: 0; }
 .audience-switcher {
   position: relative;
-  display: inline-flex;
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
   flex: none;
   padding: 3px;
@@ -196,6 +197,7 @@ button:disabled { cursor: default; }
 }
 .audience-switcher-btn {
   position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -219,17 +221,21 @@ button:disabled { cursor: default; }
 }
 .audience-switcher-btn.is-active {
   color: #fff;
-  /* The pill slides in over ~170ms: keep the label dark until it is nearly under the
+  /* The pill slides in over ~220ms: keep the label dark until it is nearly under the
      pill, then flip it to white so it never sits white on the light track. */
   transition: color 60ms ease 120ms;
 }
 .audience-switcher-indicator {
   position: absolute;
-  inset: 0;
+  inset: 3px auto 3px 3px;
+  width: calc((100% - 6px) / 2);
   border-radius: 999px;
   z-index: 0;
+  pointer-events: none;
   box-shadow: none;
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), background-color 200ms ease;
 }
+.audience-switcher--candidate .audience-switcher-indicator { transform: translateX(100%); }
 .audience-switcher--employer .audience-switcher-indicator {
   background: #022f71;
   box-shadow: none;

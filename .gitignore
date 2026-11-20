@@ -10,3 +10,4 @@ next-env.d.ts
 *.log
 scratch/edge-profile/
 scratch/hiring_preview_new.png
+scratch/toggle-frames/
