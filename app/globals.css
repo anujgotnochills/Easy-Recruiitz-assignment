@@ -393,7 +393,7 @@ html:not([data-audience="candidate"]) .nav-actions .button--primary { color: #08
 .hero-company-trust { margin-top: clamp(24px, 3vw, 45px); }
 .hero-company-trust p { margin: 0 0 12px; color: #b5c6e1; font-size: .85rem; }
 .hero-company-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 16px; max-width: 100%; }
-.company-logo { display: inline-flex; flex: none; align-items: center; gap: 5px; height: 41px; padding: 4px 9px; border-radius: 9px; background: #d8f5f6; color: #202b2e; white-space: nowrap; }
+.company-logo { display: inline-flex; flex: none; align-items: center; gap: 5px; height: 41px; padding: 4px 9px; color: #fff; white-space: nowrap; }
 .company-logo--human { font-family: Georgia, serif; font-size: 1.5rem; }
 .company-human-mark { font-size: 2rem; line-height: 1; }
 .company-logo--advisor { font-size: 1.03rem; font-weight: 850; letter-spacing: -.055em; }
