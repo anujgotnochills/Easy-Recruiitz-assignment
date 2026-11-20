@@ -24,14 +24,30 @@ const subscribe = (update: () => void) => {
 export function ContactFormEntry() {
   const { mode } = useAudience();
   const search = useSyncExternalStore(subscribe, () => window.location.search, () => '');
+  const storedDraft = useSyncExternalStore(subscribe, () => {
+    try { return window.sessionStorage.getItem('er:callback-draft') ?? ''; } catch { return ''; }
+  }, () => '');
   const params = new URLSearchParams(search);
   const requested = params.get('audience');
   const audience = requested === 'candidate' || requested === 'employer' ? requested : mode;
-  const subject = params.get('role')?.slice(0, 150);
-  return <ContactForm key={search + audience} start={audience} subject={subject} showCv={params.get('cv') === '1'} />;
+  let draft: Record<string, unknown> = {};
+  if (params.get('callback') === '1' && storedDraft) {
+    try {
+      const parsed = JSON.parse(storedDraft);
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) draft = parsed;
+    } catch { /* Ignore a stale draft. */ }
+  }
+  const fromDraft = (key: string, length: number) => typeof draft[key] === 'string' ? draft[key].slice(0, length) : '';
+  const subject = params.get('role')?.slice(0, 150) || fromDraft('role', 150);
+  const callback = fromDraft('callback', 254);
+  const location = fromDraft('location', 100);
+  const hiringType = fromDraft('hiringType', 30);
+  return <ContactForm key={search + storedDraft + audience} start={audience} subject={subject} showCv={params.get('cv') === '1'}
+    callback={callback} location={location} hiringType={hiringType} />;
 }
 
-function ContactForm({ start, subject, showCv }: { start: Audience; subject?: string; showCv: boolean }) {
+function ContactForm({ start, subject, showCv, callback, location, hiringType }:
+  { start: Audience; subject?: string; showCv: boolean; callback: string; location: string; hiringType: string }) {
   const [audience, setAudience] = useState<Audience>(start);
   const [errors, setErrors] = useState<ContactErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'failed'>('idle');
@@ -86,8 +102,8 @@ function ContactForm({ start, subject, showCv }: { start: Audience; subject?: st
     <fieldset disabled={status === 'sending'} className="contact-fields">
       <div className="form-grid">
         <label>{copy.name}<input name="name" autoComplete="name" maxLength={100} required {...invalid('name')} />{fieldError('name')}</label>
-        <label>{copy.email}<input name="email" type="email" autoComplete="email" maxLength={254} required {...invalid('email')} />{fieldError('email')}</label>
-        <label>{copy.phone}<input name="phone" type="tel" autoComplete="tel" maxLength={30} required {...invalid('phone')} />{fieldError('phone')}</label>
+        <label>{copy.email}<input name="email" type="email" autoComplete="email" maxLength={254} defaultValue={callback.includes('@') ? callback : ''} required {...invalid('email')} />{fieldError('email')}</label>
+        <label>{copy.phone}<input name="phone" type="tel" autoComplete="tel" maxLength={30} defaultValue={callback.includes('@') ? '' : callback.slice(0, 30)} required {...invalid('phone')} />{fieldError('phone')}</label>
         {audience === 'employer' && <label>{copy.company}<input name="company" autoComplete="organization" maxLength={150} required {...invalid('company')} />{fieldError('company')}</label>}
         {audience === 'candidate' && <label className={showCv ? 'cv-intent' : undefined}>{copy.cv}
           <input name="cv" type="file" accept=".pdf,.doc,.docx" {...invalid('cv', 'contact-cv-hint')} />
@@ -97,7 +113,8 @@ function ContactForm({ start, subject, showCv }: { start: Audience; subject?: st
       {sample && <p className="sample-note">{content.jobs.applyNotice}</p>}
       <label>{copy.message}<textarea name="message" rows={4} maxLength={2000} required {...invalid('message')}
         placeholder={audience === 'employer' ? copy.employerHint : copy.candidateHint}
-        defaultValue={subject ? (sample ? copy.sampleSubject : copy.employerSubject) + ': ' + subject + '\n' : ''} />
+        defaultValue={subject ? (sample ? copy.sampleSubject : copy.employerSubject) + ': ' + subject + '\n' +
+          (location ? 'Location: ' + location + '\n' : '') + (hiringType ? 'Hiring type: ' + hiringType + '\n' : '') : ''} />
         {fieldError('message')}
       </label>
       <label className="honeypot" aria-hidden="true">{copy.honeypot}<input name="website" tabIndex={-1} autoComplete="off" /></label>

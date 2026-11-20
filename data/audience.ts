@@ -76,9 +76,9 @@ export const audienceCopy = {
     announcement: 'Job seeker view selected.',
     hero: {
       title: ['Your next role', 'starts here.'],
-      description: 'Explore the types of roles we recruit for across India, or share your CV and preferred locations.',
-      primary: { text: 'Browse Jobs', href: '#jobs' },
-      secondary: { text: 'Upload Your CV', href: contactHref('candidate', undefined, true) },
+      description: 'Roles across IT, BFSI, healthcare, sales and more, hired for by teams across India.',
+      primary: { text: 'Browse jobs', href: '#jobs' },
+      secondary: { text: 'Upload your CV', href: contactHref('candidate', undefined, true) },
       directoryLabel: 'Job seeker resources',
       links: [
         { text: 'Roles we recruit for', href: '#jobs' },

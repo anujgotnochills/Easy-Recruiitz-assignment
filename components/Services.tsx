@@ -14,7 +14,7 @@ export function Services() {
     </Reveal>
     <div className="service-grid">
       {services.map((service, index) => <Reveal key={service.id} className={'service-wrap service-wrap-' + index} delay={index % 3 * 65}>
-        <a className={index === 0 ? 'service-card card service-feature' : 'service-card card'} href={'/services#' + service.id}>
+        <a className="service-card card" href={'/services#' + service.id}>
           <span className="icon-box"><Icon name={service.icon} /></span>
           <div className="service-copy"><h3>{service.title}</h3><p>{service.short}</p></div>
           <span className="service-arrow"><ArrowUpRight size={19} aria-hidden="true" /></span>

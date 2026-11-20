@@ -33,7 +33,7 @@ export function Header() {
   return <header className="header-wrap">
       <Container>
         <div className="navbar" data-compact={compact || undefined}>
-          <Logo showName name="Easy Recruitz 360" />
+          <Logo showName name="Easy Recruitz" />
           <nav className="nav-links" aria-label={content.header.navigation}>
             {nav.map(item => <a key={item.href} href={item.href}>{item.text}</a>)}
           </nav>
@@ -41,15 +41,9 @@ export function Header() {
             <AudienceSwitcher />
             <div className="nav-actions">
               {mode === 'candidate' ? (
-                <>
-                  <Button href={contactHref()} variant="outline" arrow={false}>{common.hire}</Button>
-                  <Button href="/#jobs">{common.find}</Button>
-                </>
+                <Button href={contactHref('candidate', undefined, true)} variant="brand" arrow={false}>Upload CV</Button>
               ) : (
-                <>
-                  <Button href="/#jobs" variant="outline" arrow={false}>{common.find}</Button>
-                  <Button href={contactHref()}>{common.hire}</Button>
-                </>
+                <Button href={contactHref('employer')} arrow={false}>Get a quote</Button>
               )}
             </div>
             <button type="button" className="icon-button menu-trigger" aria-expanded={menuOpen} aria-controls="mobile-menu"
@@ -61,7 +55,7 @@ export function Header() {
       </Container>
       <dialog id="mobile-menu" ref={menu} className="menu-sheet" aria-label={content.header.navigation} onClose={() => setMenuOpen(false)}>
         <div className="menu-inner">
-          <div className="menu-head"><Logo showName name="Easy Recruitz 360" /><button type="button" className="icon-button" aria-label={content.header.close} onClick={close}><X size={24} aria-hidden="true" /></button></div>
+          <div className="menu-head"><Logo showName name="Easy Recruitz" /><button type="button" className="icon-button" aria-label={content.header.close} onClick={close}><X size={24} aria-hidden="true" /></button></div>
           <nav aria-label={content.header.navigation} data-lenis-prevent>
             {nav.map(item => <a key={item.href} href={item.href} onClick={close}>{item.text}<ArrowUpRight size={22} aria-hidden="true" /></a>)}
           </nav>

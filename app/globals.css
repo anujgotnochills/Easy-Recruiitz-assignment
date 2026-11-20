@@ -360,38 +360,131 @@ button:disabled { cursor: default; }
 .hero-directory a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 58px; padding: 10px 2px; border-bottom: 1px solid #1a4070; color: #fff; font-size: clamp(.95rem, 1.35vw, 1.18rem); font-weight: 620; line-height: 1.35; }
 .hero-directory a:hover { color: var(--accent); }
 .hero-directory a svg { flex: none; color: #a8c4e0; }
+.hero-roles { display: none; }
+.hero-example-note { display: none; }
+.hero-employer-eyebrow, .hero-employer-form { display: none; }
+html:not([data-audience="candidate"]) .hero {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: clamp(28px, 5vw, 80px);
+  padding: clamp(34px, 4vw, 64px);
+  background: #102f69;
+  border-color: #183f7b;
+}
+html:not([data-audience="candidate"]) .hero-employer-eyebrow {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 7px 17px;
+  border-radius: 999px;
+  background: #ffffff1c;
+  color: #e7efff;
+  font-size: .78rem;
+  font-weight: 700;
+}
+html:not([data-audience="candidate"]) .hero h1 { margin-bottom: 8px; }
+html:not([data-audience="candidate"]) .hero h1 > span > span { color: #13bfce; }
+html:not([data-audience="candidate"]) .hero-description { margin-bottom: 0; }
+html:not([data-audience="candidate"]) .hero-description p { max-width: 42ch; color: #c7d5ec; }
+html:not([data-audience="candidate"]) .hero-button-slot,
+html:not([data-audience="candidate"]) .hero-directory { display: none; }
+html:not([data-audience="candidate"]) .hero-employer-form { display: block; width: min(100%, 530px); justify-self: end; }
+html:not([data-audience="candidate"]) .navbar .logo,
+html:not([data-audience="candidate"]) .navbar .logo .logo-img { height: 48px; }
+html:not([data-audience="candidate"]) .nav-actions .button--primary { color: #082c67; }
+.hero-company-trust { margin-top: clamp(24px, 3vw, 45px); }
+.hero-company-trust p { margin: 0 0 12px; color: #b5c6e1; font-size: .85rem; }
+.hero-company-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 5px 16px; max-width: 100%; }
+.company-logo { display: inline-flex; flex: none; align-items: center; gap: 5px; height: 41px; padding: 4px 9px; border-radius: 9px; background: #d8f5f6; color: #202b2e; white-space: nowrap; }
+.company-logo--human { font-family: Georgia, serif; font-size: 1.5rem; }
+.company-human-mark { font-size: 2rem; line-height: 1; }
+.company-logo--advisor { font-size: 1.03rem; font-weight: 850; letter-spacing: -.055em; }
+.company-advisor-mark { font-size: .7rem; letter-spacing: 1px; line-height: .77; }
+.company-logo--green, .company-logo--company { font-size: .88rem; font-weight: 800; letter-spacing: -.04em; }
+.company-logo small { display: block; font-size: .42rem; font-weight: 700; letter-spacing: .2em; text-align: center; }
+.company-n-mark { display: grid; place-items: center; width: 32px; height: 32px; border: 2px solid currentColor; border-radius: 50%; font-family: Georgia, serif; font-size: 1.6rem; font-style: italic; }
+.company-logo--organic { gap: 2px; font-family: Georgia, serif; font-size: 1.36rem; font-style: italic; }
+.company-logo--organic span { margin-left: 2px; padding: 2px 4px; border: 1px solid currentColor; border-radius: 50%; font-family: Arial, sans-serif; font-size: .62rem; font-style: normal; }
+.hero-callback { padding: clamp(22px, 2.5vw, 36px); border-radius: 30px; background: #fff; color: #082c67; box-shadow: 0 16px 32px #061d4c25; }
+.hero-callback h2 { margin: 0; font-size: clamp(1.35rem, 1.9vw, 1.7rem); font-weight: 650; letter-spacing: -.055em; }
+.hero-callback > p { margin: 3px 0 18px; color: #70809c; font-size: .84rem; line-height: 1.35; }
+.hero-callback-field { display: flex; align-items: center; gap: 10px; min-height: 51px; margin-top: 10px; padding: 0 14px; border: 1px solid #d6e0ed; border-radius: 15px; color: #3a628a; }
+.hero-callback-field:focus-within { border-color: #08b7c7; outline: 2px solid #08b7c733; }
+.hero-callback-field svg { flex: none; }
+.hero-callback-field input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: #082c67; font: inherit; font-size: .88rem; }
+.hero-callback-field input::placeholder { color: #657999; opacity: 1; }
+.hero-hiring-types { display: flex; flex-wrap: wrap; gap: 7px; margin: 10px 0; padding: 0; border: 0; }
+.hero-hiring-types label { position: relative; cursor: pointer; }
+.hero-hiring-types input { position: absolute; inset: 0; opacity: 0; }
+.hero-hiring-types span { display: block; padding: 7px 17px; border: 1px solid #d7e2ef; border-radius: 999px; color: #12386c; font-size: .78rem; line-height: 1; }
+.hero-hiring-types .is-selected span { border-color: #082f72; background: #082f72; color: #fff; }
+.hero-hiring-types input:focus-visible + span { outline: 3px solid #02bdc8; outline-offset: 2px; }
+.hero-callback-submit { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 57px; margin-top: 18px; border: 0; border-radius: 999px; background: #15b8c7; color: #082c67; font: inherit; font-size: .9rem; font-weight: 700; }
+.hero-callback-submit:hover { background: #0da9b9; }
 
 /* Role-based Theme Enhancements: Job Seeker (Candidate) */
 html[data-audience="candidate"] .hero {
-  background: linear-gradient(145deg, #022630 0%, #034454 55%, #012e3b 100%);
-  border-color: #065b6f;
-  box-shadow: 0 20px 50px rgba(1, 124, 138, 0.16);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+  overflow: hidden;
+  gap: clamp(26px, 3vw, 48px);
+  padding: clamp(42px, 4vw, 64px);
+  background: #102f69;
+  border-color: #183f7b;
+  box-shadow: 0 18px 46px #0e2b601c;
 }
 html[data-audience="candidate"] .hero h1 > span > span {
-  color: #38e8f5;
+  color: #0fc1d2;
 }
-html[data-audience="candidate"] .hero-office {
-  color: #7ee8ef;
+html[data-audience="candidate"] .hero-directory { display: none; }
+html[data-audience="candidate"] .hero-description p { color: #c5d3e9; }
+html[data-audience="candidate"] .hero-buttons .button--primary { color: #092b4d; }
+html[data-audience="candidate"] .hero-buttons .button--ghost { border-color: #6d8dbb; }
+html[data-audience="candidate"] .hero-example-note {
+  display: block;
+  margin: 17px 0 0;
+  color: #a6b7d3;
+  font-size: .8rem;
 }
-html[data-audience="candidate"] .hero-office svg {
-  color: #38e8f5;
+html[data-audience="candidate"] .hero-roles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: absolute;
+  inset: 0 clamp(20px, 3vw, 44px) 0 auto;
+  width: 52%;
+  gap: clamp(12px, 1.4vw, 22px);
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 88%, transparent);
 }
-html[data-audience="candidate"] .hero-directory ul {
-  border-top-color: #0d4d5e;
+.hero-role-column { min-width: 0; overflow: hidden; }
+.hero-role-track { display: grid; gap: 16px; animation: role-scroll 24s linear infinite; }
+.hero-role-track--reverse { animation-direction: reverse; }
+.hero-role-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  min-height: 88px;
+  padding: 14px 20px;
+  border-radius: 22px;
+  background: #fff;
+  color: #183b70;
+  box-shadow: 0 8px 22px #071e4c2b;
 }
-html[data-audience="candidate"] .hero-directory a {
-  border-bottom-color: #0d4d5e;
+.hero-role-icon { display: grid; flex: none; place-items: center; width: 44px; height: 44px; border-radius: 13px; background: #e0f4fa; color: #165187; }
+.hero-role-card strong, .hero-role-card small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hero-role-card strong { font-size: .96rem; font-weight: 750; }
+.hero-role-card small { margin-top: 4px; color: #6d7c98; font-size: .76rem; }
+@keyframes role-scroll {
+  from { transform: translateY(-40px); }
+  to { transform: translateY(calc(-50% - 48px)); }
 }
-html[data-audience="candidate"] .hero-directory a:hover {
-  color: #38e8f5;
-}
-html[data-audience="candidate"] .hero-directory a svg {
-  color: #7ee8ef;
-}
-html[data-audience="candidate"] .hero-description p {
-  color: #a8dbe0;
-}
-html[data-audience="candidate"] .dark-panel {
+html[data-audience="candidate"] .navbar .logo,
+html[data-audience="candidate"] .navbar .logo .logo-img { height: 48px; }
+html[data-audience="candidate"] .navbar .logo-name { font-weight: 650; letter-spacing: -.05em; }
+html[data-audience="candidate"] .nav-actions .button--brand { background: #092d68; }
+html[data-audience="candidate"] .nav-actions .button--brand:hover { background: #071f4c; }
+html[data-audience="candidate"] .dark-panel:not(.hero) {
   background-color: var(--ink);
   border-color: #065b6f;
 }
@@ -444,10 +537,6 @@ html[data-audience="candidate"] .pill {
 .service-copy p { max-width: 43ch; margin: 8px 0 0; color: var(--muted); font-size: .88rem; line-height: 1.45; }
 .service-arrow { pointer-events: none; position: absolute; top: 18px; right: 17px; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #c0d5e8; color: var(--brand); background: #ffffffba; transition: transform 200ms ease; }
 .service-card:is(:hover, :focus-visible) .service-arrow { transform: translate(3px, -3px); }
-.service-feature { background: var(--accent); border-color: var(--accent-hover); }
-.service-feature .icon-box { background: #d6f5f7; color: var(--brand); }
-.service-feature .service-copy p { color: #fff; }
-.service-feature .service-arrow { background: #d6f5f7; border-color: var(--accent-hover); color: var(--brand); }
 
 .audience-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .audience-benefit > div { height: 100%; }
@@ -741,8 +830,28 @@ html[data-audience="candidate"] .pill {
   .job-filters button { padding-inline: 9px; }
   .contact-form .segment-option span { padding-inline: 6px; }
 }
+@media (max-width: 700px) {
+  html:not([data-audience="candidate"]) .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 30px var(--panel-pad);
+  }
+  html:not([data-audience="candidate"]) .hero-employer-form { width: 100%; }
+  .hero-company-trust { margin-top: 24px; }
+  html[data-audience="candidate"] .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 30px var(--panel-pad);
+  }
+  html[data-audience="candidate"] .hero-roles { position: relative; inset: auto; width: 100%; height: 290px; }
+  .hero-role-card { min-height: 72px; gap: 9px; padding: 10px; border-radius: 16px; }
+  .hero-role-icon { width: 34px; height: 34px; border-radius: 10px; }
+  .hero-role-card strong { font-size: .78rem; }
+  .hero-role-card small { font-size: .65rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-delay: 0ms !important; transition-duration: .001ms !important; }
   [data-reveal="pending"], [data-reveal="visible"] { opacity: 1; transform: none; animation: none; }
+  .hero-role-track { animation: none; }
 }
 

@@ -8,3 +8,5 @@ next-env.d.ts
 !.env.example
 .vercel/
 *.log
+scratch/edge-profile/
+scratch/hiring_preview_new.png
